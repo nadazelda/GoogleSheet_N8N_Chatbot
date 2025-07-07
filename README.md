@@ -1,25 +1,24 @@
-📌 프로젝트 요약
-✅ 프로젝트명: 🧠 D.I.F (Data Intelligence Finance)
+# 🧠 D.I.F (Data Intelligence Finance)
 
-✅ 목적:
-GoogleSheet 기반 가계부 데이터를 Supabase Vector Store로 벡터화
-OpenAI 기반 RAG를 사용해 사용자가 Streamlit UI에서 질의하면 자동으로 응답
-n8n을 통한 ETL 및 워크플로 관리, Supabase, OpenAI, GoogleSheet 완전 연동
-Cloudflare Tunnel을 통해 HTTPS로 외부 접속 가능
+## 📌 프로젝트 요약
 
-✅ 배포 및 운영 환경:
-AWS EC2 (Ubuntu)
-Docker + Docker Compose 기반 완전 자동화 배포
-Streamlit 사용자 UI + n8n 컨테이너 분리 운영
-Cloudflare Tunnel로 HTTPS 무료 연동
+GoogleSheet 기반 가계부 데이터를 Supabase Vector Store로 벡터화하여 OpenAI 기반 RAG로 자동 응답하는 개인 맞춤형 가계부 QA 시스템입니다.
 
+- ETL 및 워크플로 관리: n8n
+- LLM 기반 RAG 응답: OpenAI
+- Vector Store: Supabase
+- 사용자 UI: Streamlit
+- HTTPS 연동: Cloudflare Tunnel
+- 배포 환경: AWS EC2 + Docker + Docker Compose
 
+---
+
+## 📂 프로젝트 구조
 
 /home/ec2-user/
 ├── n8n/
 │   ├── docker-compose.yml         # n8n 컨테이너 배포
 │   └── n8n_data/                  # n8n 워크플로 및 데이터 영구 저장 볼륨
-│
 └── streamlitChat/
     ├── app.py                     # Streamlit 사용자 UI
     ├── Dockerfile                 # Streamlit Docker 빌드용
@@ -27,48 +26,98 @@ Cloudflare Tunnel로 HTTPS 무료 연동
     ├── requirements.txt           # Streamlit 의존성
     └── .env                       # WEBHOOK_URL 등 환경 변수
 
+---
 
-🛠️ 사용 기술
-Backend: n8n, OpenAI GPT-4o, Supabase, GoogleSheet
-Frontend: Streamlit (타이핑 애니메이션, 로딩 스피너 포함)
-Infra: AWS EC2, Docker, Docker Compose
-Network: Cloudflare Tunnel HTTPS 연동
-Vector Store: Supabase Embedding
+## 🚀 주요 기능
 
+- GoogleSheet 자동 연동 → Supabase 벡터화
+- 사용자가 Streamlit UI에서 질문 시 OpenAI 기반 RAG 자동 응답
+- 로딩 스피너 및 타이핑 애니메이션 출력
+- Cloudflare Tunnel HTTPS 외부 접속
+- n8n Function Node에서 Webhook JSON 파싱 후 AI Agent Node 전달
+- 세션 기반 관리 및 대화 맥락 유지
 
-🚀 주요 기능
-✅ GoogleSheet 자동 연동 → Supabase로 데이터 벡터화
-✅ 사용자 질의 시 OpenAI 기반 RAG 자동 응답
-✅ Streamlit 사용자 UI에서 실시간 대화
-✅ 응답 시 로딩 스피너 + 스트리밍(타이핑) 효과
-✅ Cloudflare Tunnel HTTPS 접근으로 외부 접속 가능
-✅ n8n Function Node에서 Webhook JSON 파싱 → AI Agent Node 전달 및 응답 관리
-✅ 세션 기반 관리 및 대화 맥락 유지 가능
+---
 
+## 🛠️ 사용 기술
 
+Backend: n8n, OpenAI GPT-4o, Supabase, GoogleSheet  
+Frontend: Streamlit  
+Infra: AWS EC2, Docker, Docker Compose  
+Network: Cloudflare Tunnel  
+Vector DB: Supabase Embedding
 
+---
 
-⚡ 운영 방법
-1️⃣ n8n 컨테이너 배포
-cd ~/n8n
+## ⚡ 운영 방법
+
+1. n8n 컨테이너 실행
+
+cd ~/n8n  
 docker compose up -d
-2️⃣ Streamlit + Cloudflare 배포
-  cd ~/streamlitChat
-  docker compose up -d --build
-3️⃣ 상태 확인
-  docker ps -a
-  docker logs -f n8n
-  docker logs -f streamlit-app
-4️⃣ 불필요한 이미지/컨테이너 정리
-  docker system prune -a -f --volumes
-💡 주요 연동 흐름
-1️⃣ n8n:
-  GoogleSheet → Supabase Embedding → Webhook Node → AI Agent Node
-  응답을 JSON 형태로 반환:
 
-2️⃣ Streamlit 사용자 UI:
-  사용자 입력 → n8n Webhook POST 호출:
+2. Streamlit + Cloudflare 실행
 
-3️⃣ Cloudflare Tunnel:
-  Streamlit 컨테이너 http://localhost:8501 을 HTTPS URL로 외부 노출.
+cd ~/streamlitChat  
+docker compose up -d --build
 
+3. 상태 확인
+
+docker ps -a  
+docker logs -f n8n  
+docker logs -f streamlit-app
+
+4. 사용하지 않는 이미지/볼륨 정리
+
+docker system prune -a -f --volumes
+
+---
+
+## 💡 연동 흐름
+
+n8n: GoogleSheet → Supabase → Webhook Node → AI Agent Node → JSON 응답 반환
+
+{
+  "answer": "질문에 대한 답변"
+}
+
+Streamlit UI: 사용자 질문 입력 → n8n Webhook POST 요청
+
+[
+  {
+    "sessionId": "<uuid>",
+    "action": "sendMessage",
+    "chatInput": "<질문>"
+  }
+]
+
+응답 수신 후 로딩 및 타이핑 애니메이션 출력
+
+Cloudflare Tunnel: Streamlit (localhost:8501) → HTTPS URL 외부 노출
+
+---
+
+## ✅ 유지보수 체크리스트
+
+- n8n Webhook 및 워크플로 정상 작동
+- Supabase 및 GoogleSheet 연동 확인
+- Streamlit → n8n → 응답 → Streamlit 표시 확인
+- Cloudflare Tunnel HTTPS 접근 확인
+- EC2 메모리 및 디스크 상태 주기적 점검
+- 컨테이너 OOM 및 자동 재시작 설정 확인
+
+---
+
+## 🌿 향후 개선 예정
+
+- Cloudflare Tunnel 고정 인증 연동
+- 사용자별 세션 및 개인화 관리
+- LLM 캐싱 및 속도 최적화
+- Slack/Telegram 알림 연동
+- ETL 장애 자동 모니터링
+
+---
+
+## 📞 문의 및 피드백
+
+유지 보수, 개선, 기능 확장 필요 시 언제든 문의해주세요.
