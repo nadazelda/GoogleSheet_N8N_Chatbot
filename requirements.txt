@@ -1,0 +1,29 @@
+# LangChain 관련 (최신 안정 조합)
+langchain==0.2.11
+langchain-core==0.2.23
+langchain-community==0.2.10
+langchain-huggingface==0.0.1
+langchain-experimental==0.0.63
+langchain-text-splitters==0.2.0
+
+# 벡터 임베딩
+sentence-transformers==2.6.1
+
+# 벡터 DB
+chromadb==0.4.24
+
+# API 서버
+fastapi==0.110.0
+uvicorn[standard]==0.27.1
+
+# 필수
+python-dotenv
+pandas
+openpyxl
+requests
+
+#lamma
+llamma2
+
+# ✅ Pydantic 제한 제거 → 최신 버전 자동 설치됨
+# ❌ pydantic<2.0 (이 줄은 제거!)
