@@ -1,9 +1,25 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  app:
+  streamlit:
     build: .
+    image: streamlit-app
+    container_name: streamlit-app
     ports:
       - "8501:8501"
     env_file:
       - .env
+    restart: always
+    networks:
+      - shared-network
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-streamlit
+    command: tunnel --url http://streamlit:8501
+    restart: always
+    networks:
+      - shared-network
+networks:
+  shared-network:
+    external: true
