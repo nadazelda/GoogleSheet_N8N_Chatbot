@@ -15,11 +15,11 @@ GoogleSheet 기반 가계부 데이터를 Supabase Vector Store로 벡터화하�
 
 ## 📂 프로젝트 구조
 
-*/home/ec2-user/
-*├── n8n/
-*│   ├── docker-compose.yml         # n8n 컨테이너 배포
-*│   └── n8n_data/                  # n8n 워크플로 및 데이터 영구 저장 볼륨
-*└── streamlitChat/
+* /home/ec2-user/
+* ├── n8n/
+* │   ├── docker-compose.yml         # n8n 컨테이너 배포
+* │   └── n8n_data/                  # n8n 워크플로 및 데이터 영구 저장 볼륨
+* └── streamlitChat/
 *    ├── app.py                     # Streamlit 사용자 UI
 *    ├── Dockerfile                 # Streamlit Docker 빌드용
 *    ├── docker-compose.yml         # Streamlit + Cloudflare Tunnel 배포
