@@ -1,4 +1,4 @@
-<img width="1710" height="63" alt="image" src="https://github.com/user-attachments/assets/7e0ddd2b-ec2d-456f-9231-5fe32a18b26f" /># 🧠 가계부 LLM 챗봇구현
+# 🧠 가계부 LLM 챗봇구현
 
 ## 📌 프로젝트 요약
 
