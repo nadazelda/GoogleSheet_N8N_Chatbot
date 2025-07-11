@@ -49,6 +49,14 @@ Vector DB: Supabase Embedding
 
 ---
 
+## ⚡ 사전 환경설정
+1. ec2서버 Docker 설치
+2. n8n 컨테이너설치 
+3. streamlit 사용자 화면 빌드 docker-compose를 통해 cloudflare까지 같이 설치 ( dokcer-compose.yml참고 )
+4. n8n 실행 후 n8n 노드.json 파일 import 
+   * 구글시트 인증, supbase인증, openai인증은 각자 셋팅해야합니다
+
+   
 ## ⚡ 운영 방법
 
 1. n8n 컨테이너 실행
@@ -68,6 +76,11 @@ docker logs -f n8n
 docker logs -f streamlit-app
 
 <img width="1710" height="63" alt="image" src="https://github.com/user-attachments/assets/f374f8dc-4878-4673-8d0b-c094a5508eb5" />
+
+이렇게 총 3가지 컨테이너가 실행돼야 정상 동작
+* n8n : 벡터데이터 생성 + 사용자 챗봇 webhook 역할
+* sreamlit : 사용자 화면 UI + n8n 노드와 통신
+* cloudflare : 접속 url 제공 
 
 
 4. 사용하지 않는 이미지/볼륨 정리
