@@ -89,3 +89,18 @@ docker system prune -a -f --volumes
 
 ---
 
+
+5. 실행확인
+   cloudflare log 공개 url 접속
+   <img width="1235" height="210" alt="image" src="https://github.com/user-attachments/assets/e42f2a62-f9f7-436a-b229-58161b1f3777" />
+
+  streamlit 기반 초기페이지 
+  <img width="1382" height="1059" alt="image" src="https://github.com/user-attachments/assets/017dedbb-e396-43f2-815a-ae46be1b57b8" />
+
+  n8n 워크플로우 활성화 확인 
+  <img width="1560" height="352" alt="image" src="https://github.com/user-attachments/assets/4931a430-b161-4602-958b-432cc2ddd395" />
+
+  질의문 
+  <img width="1253" height="702" alt="image" src="https://github.com/user-attachments/assets/dc0cc490-c100-4b13-b6df-b6b7e796b934" />
+
+   
