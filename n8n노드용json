@@ -102,7 +102,7 @@
     },
     {
       "parameters": {
-        "url": "https://sheets.googleapis.com/v4/spreadsheets/1bAGnPfPavzvGFL4_NsujdqHURFIPgwfPiOuXO5f2Ljo?fields=sheets.properties.title&key=AIzaSyBJoBYyGWzOp9DIm6NJUkhCSTHNBCWQKHE",
+        "url": "https://sheets.googleapis.com/v4/spreadsheets/?fields=sheets.properties.title&key=",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "googleSheetsOAuth2Api",
         "options": {}
@@ -201,7 +201,7 @@
     },
     {
       "parameters": {
-        "url": "https://sheets.googleapis.com/v4/spreadsheets/1NOkeUuY8qEsgz2WJXAD5BXJn3O9nOmP11kJJO0XCzDQ?fields=sheets.properties.title&key=AIzaSyBJoBYyGWzOp9DIm6NJUkhCSTHNBCWQKHE",
+        "url": "https://sheets.googleapis.com/v4/spreadsheets/?fields=sheets.properties.title&key=",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "googleSheetsOAuth2Api",
         "options": {}
@@ -225,7 +225,7 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1NOkeUuY8qEsgz2WJXAD5BXJn3O9nOmP11kJJO0XCzDQ",
+          "value": "",
           "mode": "id"
         },
         "sheetName": {
